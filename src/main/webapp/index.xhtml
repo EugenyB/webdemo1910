@@ -3,8 +3,9 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" lang="ru">
 <f:view>
     <h:head>
         <title>Кафедры</title>
@@ -21,8 +22,16 @@
                 <h:outputText value="#{k.name}"/>
             </h:column>
             <h:column>
+                <f:facet name="header">Преподаватели</f:facet>
+                <h:commandButton value="Показать" action="#{kafedraBean.showTeachers(k.id)}"/>
+            </h:column>
+            <h:column>
                 <f:facet name="header">X</f:facet>
                 <h:commandButton value="удалить" action="#{kafedraBean.delete(k.id)}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">E</f:facet>
+                <h:commandButton value="изменить" action="#{kafedraBean.edit(k.id)}"/>
             </h:column>
         </h:dataTable>
 

@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -24,4 +28,19 @@ public class Teacher {
     @JoinColumn(name = "kafedra_id")
     private Kafedra kafedra;
 
+    @ManyToMany(mappedBy = "teachers")
+    private Set<Subject> subjects = new LinkedHashSet<>();
+
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return getId() != null && Objects.equals(getId(), teacher.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

@@ -24,4 +24,12 @@ public class KafedraDao {
         Kafedra kafedra = em.find(Kafedra.class, id);
         em.remove(kafedra);
     }
+
+    public Kafedra find(int kafedraId) {
+        return em.find(Kafedra.class, kafedraId);
+    }
+
+    public void update(Kafedra kafedra) {
+        em.merge(kafedra);
+    }
 }

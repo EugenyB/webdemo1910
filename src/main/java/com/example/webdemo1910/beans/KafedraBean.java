@@ -20,6 +20,9 @@ public class KafedraBean implements Serializable {
     @Getter @Setter
     private Kafedra kafedra = new Kafedra();
 
+    @Getter @Setter
+    private Kafedra selectedKafedra;
+
     public List<Kafedra> getKafedraList() {
         return kafedraDao.findAll();
     }
@@ -31,5 +34,21 @@ public class KafedraBean implements Serializable {
 
     public void delete(int id) {
         kafedraDao.delete(id);
+    }
+
+    public String showTeachers(int kafedraId) {
+        selectedKafedra = kafedraDao.find(kafedraId);
+        return "kafedra";
+    }
+
+    public String edit(int id) {
+        kafedra = kafedraDao.find(id);
+        return "edit_kafedra";
+    }
+
+    public String update() {
+        kafedraDao.update(kafedra);
+        kafedra = new Kafedra();
+        return "index";
     }
 }
