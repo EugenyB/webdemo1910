@@ -12,28 +12,25 @@
     </h:head>
     <h:body>
         <h:form>
-        <h:dataTable value="#{kafedraBean.kafedraList}" var="k">
-            <h:column>
-                <f:facet name="header">#</f:facet>
+        <p:dataTable value="#{kafedraBean.kafedraList}" var="k" rowHover="true" stripedRows="true">
+            <p:column headerText="#">
                 <h:outputText value="#{k.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Кафедра</f:facet>
+            </p:column>
+            <p:column headerText="Кафедра">
                 <h:outputText value="#{k.name}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Преподаватели</f:facet>
-                <h:commandButton value="Показать" action="#{kafedraBean.showTeachers(k.id)}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">X</f:facet>
-                <h:commandButton value="удалить" action="#{kafedraBean.delete(k.id)}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">E</f:facet>
+            </p:column>
+            <p:column headerText="Преподаватели">
+                <p:commandButton value="Показать" action="#{kafedraBean.showTeachers(k.id)}"
+                            class="ui-button-info rounded-button" ajax="false" icon="pi pi-users"/>
+            </p:column>
+            <p:column headerText="X">
+                <p:commandButton value="удалить" action="#{kafedraBean.delete(k.id)}"
+                                 class="ui-button-danger rounded-button" ajax="false" icon="pi pi-trash"/>
+            </p:column>
+            <p:column headerText="E">
                 <h:commandButton value="изменить" action="#{kafedraBean.edit(k.id)}"/>
-            </h:column>
-        </h:dataTable>
+            </p:column>
+        </p:dataTable>
 
             <h:panelGrid columns="2">
                 <h:outputLabel value="Название"/>
